@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta Tags required for
+       Progressive Web App -->
+    <meta name="apple-mobile-web-app-status-bar" content="#aa7700">
+    <meta name="theme-color" content="black">
+
+    <!-- Manifest File link -->
+    <link rel="manifest" href="manifest.json">
+    <title>Screen Recorder</title>
+    <link rel="icon" type="image/x-icon" href="record.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        *margin {
+            padding: 0px;
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- title -->
+    <div class="row justify-content-center m-0 mt-2 mb-2">
+        <div class="col-auto">
+            <h3 class="display-5 text-center"> <i class="fa fa-stop-circle-o" style="font-size: 35px;"></i> Screen
+                Recorder </h3>
+        </div>
+    </div>
+
+    <!-- two sections -->
+    <div class="row border p-0 m-0">
+        <div class="col-md-6 col-sm-12 p-0 m-0 mb-2">
+            <div class="card shadow m-2">
+                <video class="recording" autoplay muted width="600px" height="500px"></video>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12 p-0 m-0 mb-2">
+            <div class="card shadow m-2">
+                <video class="output" autoplay muted width="600px" height="500px"></video>
+            </div>
+        </div>
+    </div>
+
+    <!-- buttons -->
+    <div class="row justify-content-center mt-4 m-0 mb-4">
+        <div class="col-auto">
+            <div class="start-btn btn btn-primary">
+                <i class="fa fa-play-circle-o" style="font-size: 20px;"></i> Start Recording
+            </div>
+        </div>
+        <div class="col-auto">
+            <div class="stop-btn btn btn-success">
+                <i class="fa fa-stop-circle-o" style="font-size: 20px;"></i> Stop Recording
+            </div>
+        </div>
+        <div class="col-auto">
+            <a href="#" download="output.mp4" class="download-anc btn btn-secondary">
+                <i class="fa fa-download" style="font-size: 20px;"></i>
+                Download
+            </a>
+        </div>
+
+
+    </div>
+
+    <!-- footer -->
+    <div class="row justify-content-center m-0 p-3 bg-dark text-light">
+        <div class="col-auto h6">
+            Made with <i class="fa fa-heart" style="font-size: 20px;color: red;"></i> by Prashik Dewtale &copy;2023
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+        <script>
+            window.addEventListener('load', () => {
+              registerSW();
+            });
+         
+            // Register the Service Worker
+            async function registerSW() {
+              if ('serviceWorker' in navigator) {
+                try {
+                  await navigator
+                        .serviceWorker
+                        .register('serviceworker.js');
+                }
+                catch (e) {
+                  console.log('SW registration failed');
+                }
+              }
+            }
+         </script>
+
+</body>
+
+</html>
